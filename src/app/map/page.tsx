@@ -7,12 +7,11 @@ function MapComponent() {
   const mapInstance = useRef<null|Object>(null)
 
   useEffect(() => {
-    console.log(mapRef.current);
       import('leaflet').then(L => {
-        // console.log(mapRef.current);
         if (mapRef.current && !mapInstance.current) {
             var map = L.map(mapRef.current).setView([40.630, -111.616], 12);
 
+            // found this tile layer here: https://gist.github.com/xantiagoma/39145a3042eca53a57ac3290a1a34973?permalink_comment_id=3415377
             L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
             maxZoom: 20,
             subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
