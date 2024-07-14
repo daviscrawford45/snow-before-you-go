@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react';
+import marker from './black_marker.png'
 
 function MapComponent() {
   const mapRef = useRef(null);
@@ -17,21 +18,39 @@ function MapComponent() {
             subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
             }).addTo(map);
 
+            var markerIcon = L.icon({
+                iconUrl: 'red_marker.png',
+            
+                iconSize:     [60, 60], // size of the icon
+                shadowSize:   [50, 64], // size of the shadow
+                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                shadowAnchor: [4, 62],  // the same for the shadow
+                popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            });
+
             // Brighton Weather Station
-            var brighton_marker = L.marker([40.59936, -111.58167]).addTo(map);
-            brighton_marker.bindPopup("<b>Brighton SNOTEL</b><br>Elevation: 8765.0 ft");
+            var brightonMarker = L.marker([40.59936, -111.58167], {icon: markerIcon}).addTo(map);
+            brightonMarker.bindPopup("<b>Brighton SNOTEL</b><br>Elevation: 8765.0 ft");
 
             // Alta Weather Station
-            var alta_marker = L.marker([40.5905, -111.638]).addTo(map);
-            alta_marker.bindPopup("<b>Alta - Guard House</b><br>Elevation: 8799.0 ft");
+            var altaMarker = L.marker([40.5905, -111.638], {icon: markerIcon}).addTo(map);
+            altaMarker.bindPopup("<b>Alta - Guard House</b><br>Elevation: 8799.0 ft");
 
             // Solitude Weather Station
-            var solitude_marker = L.marker([40.60081, -111.60364]).addTo(map);
-            solitude_marker.bindPopup("<b>Solitude Summit</b><br>Elevation: 9641.0 ft");
+            var solitudeMarker = L.marker([40.60081, -111.60364], {icon: markerIcon}).addTo(map);
+            solitudeMarker.bindPopup("<b>Solitude Summit</b><br>Elevation: 9641.0 ft");
 
             // Spruces Weather Station
-            var spruces_marker = L.marker([40.641, -111.636]).addTo(map);
-            spruces_marker.bindPopup("<b>Spruces</b><br>Elevation: 7402.0 ft");
+            var sprucesMarker = L.marker([40.641, -111.636], {icon: markerIcon}).addTo(map);
+            sprucesMarker.bindPopup("<b>Spruces</b><br>Elevation: 7402.0 ft");
+
+            //Aspen Grove Weather Station 40.404631/-111.604574
+            var aspenGroveMarker = L.marker([40.404631, -111.604574], {icon: markerIcon}).addTo(map);
+            aspenGroveMarker.bindPopup("<b>Aspen Grove</b><br>Elevation: 6880.0 ft");
+
+            //Timpanogos Cave Weather Station 40.43524/-111.70741
+            var timpCaveMarker = L.marker([40.43524, -111.70741], {icon: markerIcon}).addTo(map);
+            timpCaveMarker.bindPopup("<b>Timpanogos Cave</b><br>Elevation: 8015.0 ft");
 
             mapInstance.current = map;
         }
